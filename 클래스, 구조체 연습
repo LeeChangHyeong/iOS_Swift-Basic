@@ -1,0 +1,51 @@
+import UIKit
+
+// 유투버 (데이터) 모델 - struct / 구조체
+struct YoutuberStruct {
+    var name : String
+    var subscribersCount : Int
+}
+
+var devLee = YoutuberStruct(name: "이창형", subscribersCount: 999999)
+
+var devLeeClone = devLee
+print("===========struct===========")
+
+print("값 넣기 전 devLeeClone.name : \(devLeeClone.name)")
+
+devLeeClone.name = "이창혀어엉"
+
+// 값 복사이기 때문에 둘의 값이 다르다
+print("값 넣은 후 devLeeClone.name : \(devLeeClone.name)")
+print("값 넣은 후 devLee.name : \(devLee.name)")
+
+print("===========class===========")
+//클래스
+class YoutuberClass {
+    var name : String
+    var subscribersCount : Int
+    // init - 생성자 - 즉 메모리에 올린다
+    // init으로 매개변수를 가진 생성자 메소드를 만들어야
+    // 매개변수를 넣어서 그 값을 가진 객체(object)를 만들 수 있다.
+    init(name: String, subscribersCount : Int){
+        //외부에서 받은 name을 class값 name에 넣는다.
+        self.name = name
+        self.subscribersCount = subscribersCount
+    }
+}
+
+var changBro = YoutuberClass(name: "이창형", subscribersCount: 999999)
+
+var changBroClone = changBro
+
+print("값 넣기 전 changBroClone.name : \(changBroClone.name)")
+
+changBroClone.name = "이창형이"
+print("값 넣은 후 changBroClone.name : \(changBroClone.name)")
+print("값 넣기 전 changBro.name : \(changBro.name)")
+
+
+
+// 클래스, 구조체(struct)
+// 쉽게 말하면 클래스는 같은 메모리 주소를 가리키고 있음 참조(레퍼런스) 그래서 원본을 바꾸면 같이 바뀜.
+// struct는 복사본을 만드는 것이기 때문에 복사본을 건드려도 원본은 변하지 않는다.
