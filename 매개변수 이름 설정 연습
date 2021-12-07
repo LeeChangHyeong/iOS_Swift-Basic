@@ -1,0 +1,26 @@
+import UIKit
+
+// 매개변수는 함수로 들어오는 변수
+// 함수, 메소드 정의
+func myFunction(name: String) -> String{
+    return "안녕하세요?! \(name) 입니다!"
+}
+
+// 함수, 메소드를 호출한다. call
+myFunction(name: "이창형")
+
+// 함수, 메소드 정의
+func myFunctionSecond(with name: String) -> String{
+    return "안녕하세요?! \(name) 입니다!"
+}
+
+myFunctionSecond(with: "이차아앙형")
+
+// name 앞에 _ 쓰는건 매개변수를 받을때 앞에 name을 적기 싫어서입니다.
+func myFunctionThird(_ name: String) -> String{
+    return "안녕하세요?! \(name) 입니다!"
+}
+
+myFunctionThird("changBro")
+
+// 매개변수 이름 설정 연습
