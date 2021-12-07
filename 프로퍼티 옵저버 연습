@@ -1,0 +1,18 @@
+import UIKit
+
+var myAge = 0 {
+    willSet{
+        print("값이 변경 될 예정이다. \(myAge)")
+        
+    }
+    didSet{
+        print("값이 변경 되었다. \(myAge)")
+        
+    }
+}
+
+myAge = 25
+myAge = 26
+
+// 프로퍼티 옵저버 - 변화를 관찰하는 것
+// willSet, didSet 값 변경 여부 확인.
