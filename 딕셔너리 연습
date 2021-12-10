@@ -1,0 +1,39 @@
+import UIKit
+
+// 딕셔너리 형태 [] 키:값
+var myFriends = ["bestFriend" : "은비", "highSchool" : "찬주"]
+                 
+
+let myBestFriend = myFriends["bestFriend"]
+
+let highSchoolFriend = myFriends["highSchool"]
+
+// default는 값이 없을때 nil값말고 나타나게 해줌
+let middleSchoolFriend = myFriends["middleSchool", default: "친구 없음"]
+
+myFriends["bestFriend"] = "제니"
+
+let myBF = myFriends["bestFriend"]
+
+myFriends["newFriend"] = "카리나"
+
+let newFriend = myFriends["newFriend"]
+
+myFriends.updateValue("윈터", forKey: "girlFriend")
+
+let girlFriend = myFriends["girlFriend"]
+
+myFriends.updateValue("고윤정", forKey: "bestFriend")
+
+let myBestFriend2 = myFriends["bestFriend"]
+
+// 키는 string 값은 int
+let emptyDictionary = [String : Int]()
+
+let myEmptyDictionary : [String : Int] = Dictionary<String,Int>()
+
+myFriends.count
+
+for item in myFriends {
+    print("item : ",item)
+}
