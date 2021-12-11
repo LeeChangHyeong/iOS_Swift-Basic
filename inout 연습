@@ -1,0 +1,30 @@
+    import UIKit
+
+    var title = ""
+
+    //let jobTitle = "개발자"
+    //상수라 값 변경 불가
+    //jobTitle = "부자"
+
+    func sayName(_ name: String){
+        print("안녕?! 난 \(name)이라고 해")
+    }
+
+    //매개변수 name 변경 불가 inout을 쓰면 가능
+    //func sayHi(_ name: String){
+    //    name = "개발하는" + name
+    //    print("안녕?! 난 \(name)이라고 해")
+    //}
+
+    func sayHi(_ name: inout String){
+        name = "개발하는 " + name
+        print("안녕?! 난 \(name)이라고 해")
+    }
+
+    sayName("이창형")
+
+    var namee = "이창형2"
+
+    sayHi(&namee)
+
+
