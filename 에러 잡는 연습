@@ -1,0 +1,56 @@
+import UIKit
+
+enum MismatchError : Error {
+    case nameMismatch
+    case numberMismatch
+    
+}
+
+// throws는 에러를 던지는 메소드인걸 보여줌
+//func guessMyName(name input: String) throws {
+//    print("guessMyName() called")
+//    if input != "이창형"{
+//        print("틀렸다")
+        //return을 쓰지않으면 밑에 문장까지 실행해버린다.
+        //return
+//        throw MismatchError.nameMismatch
+//    }
+    
+//    print("맞췄다")
+//}
+
+
+/// 번호를 맞춘다
+/// - Parameter input: 사용자 숫자 입력
+/// - Returns: bool 맞췄는지 여부
+func guessMyNumber(number input: Int) throws -> Bool{
+    print("guessMyNumber() called")
+    
+    if input != 10{
+        print("틀렸다")
+        throw MismatchError.numberMismatch
+        //return
+    }
+    
+    print("맞췄다")
+    return true
+}
+
+//던져진 에러를 잡지 않겠다
+//try? guessMyName(name: "창형")
+
+//에러가 무조건 없을 것 이다. 하지만 에러가 있기 때문에 오류가 난다.
+//try! guessMyName(name: "창형")
+
+//에러를 잡아야겠다
+//do {
+//    try guessMyName(name: "창형")
+//} catch{
+//    print("잡은 에러 \(error):")
+//}
+
+do {
+    let receivedValue = try guessMyNumber(number: 9)
+} catch{
+    print("잡은 에러 : \(error)")
+}
