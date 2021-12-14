@@ -1,0 +1,77 @@
+import Cocoa
+import UIKit
+
+/*
+{ (param) -> return type in
+    statement
+    ...
+}
+*/
+
+
+// Example 1: Cho Simple Closure
+
+let choSimpleClosure = {
+    // 괄호 안 요거 자체가 클로져
+}
+
+choSimpleClosure()
+
+
+// Example 2: 코드블록을 구현한 Closure
+
+let choSimpleClosure2 = {
+    print("Hello, 클로저, 코로나 바이!")
+}
+
+choSimpleClosure2()
+
+
+// Example 3: 인풋 파라미터를 받는 Closure
+
+let choSimpleClosure3: (String) -> Void = { name in
+    print("Hello, 나의 이름은 \(name)입니다.")
+}
+
+choSimpleClosure3("이창형")
+
+// Example 4: 값을 리턴하는 Closure
+
+let choSimpleClosure4: (String) -> String = { name in
+    let message = "iOS 개발 만세, \(name)님 경제적 자유를 얻으실 거에요!"
+    return message
+}
+
+let result = choSimpleClosure4("이창형")
+print(result)
+
+// Example 5: Closure를 파라미터로 받는 함수 구현
+
+func someSimpleFunction(choSimpleClosure: () -> Void) {
+    print("함수에서 호출 되었어요")
+    choSimpleClosure()
+}
+
+someSimpleFunction(choSimpleClosure: {
+    print("hello 코로나 from closure")
+})
+
+// Example 6: Trailing Closure
+// 마지막 인자가 클로저인 경우에 생략 가능
+
+func someSimpleFunction2(message: String, choSimpleClosure: () -> Void) {
+    print("함수에서 호출이 되었어요, 메시지는 '\(message)'입니다.")
+    choSimpleClosure()
+}
+
+// 1
+someSimpleFunction2(message: "코로나 너무 싫어", choSimpleClosure: {
+    print("바이 코로나 ㅋ")
+})
+
+// 2
+someSimpleFunction2(message: "코로나 너무 싫어"){
+    print("바이 코로나 ㅋ")
+}
+
+// 1, 2 똑같음
