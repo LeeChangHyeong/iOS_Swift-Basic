@@ -1,0 +1,52 @@
+import UIKit
+
+struct Person {
+    // 스토어드 프로퍼티(Stored Properties) - 객체안에 값 저장
+    var firstName : String
+    var lastName : String
+    
+    // fullName은 어디 따로 저장하는게 아닌 firstName 이랑 lastName을 바로 사용하여 return
+    // read only이기 때문에 셋팅 불가하지만 get, set 사용하면 가능
+    
+    // 컴퓨티드 프로퍼티(Computed Properties) - 저장된 값을 가공하여 이용
+    var fullName: String {
+        get{
+            return "\(firstName) \(lastName)"
+        }
+        // newValue = "Jay Park"로 들어온다
+        // 띄워쓰기를 기준으로 앞은 firstName 뒤는 lastName으로 저장
+        set {
+            if let firstName = newValue.components(separatedBy: " ").first {
+                self.firstName = firstName
+            }
+            
+            if let lastName = newValue.components(separatedBy: " ").last {
+                self.lastName = lastName
+            }
+        }
+    }
+    // 타입 프로퍼티 (Type Properties) - 인스턴스랑 별개로 타입자체에 속한 프로퍼티를 사용
+    static let isAlien: Bool = false
+}
+
+var person = Person(firstName: "이", lastName: "창형")
+
+person.firstName
+person.lastName
+
+person.firstName = "배"
+person.lastName = "트맨"
+
+person.firstName
+person.lastName
+
+
+person.fullName
+
+// fullName 셋팅
+person.fullName = "Jay Park"
+person.firstName
+person.lastName
+
+
+Person.isAlien
