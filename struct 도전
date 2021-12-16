@@ -1,0 +1,37 @@
+import UIKit
+
+// 도전
+// 1. 강의 이름, 강사 이름, 학생수를 가지는 Struct 만들기 (Lecture)
+// 2. 강의 어레이와 강사 이름을 받아서, 해당 강사의 강의 이름을 출력하는 함수 만들기
+// 3. 강의 3개 만들고 강사이름으로 강의 찾기
+
+// 1
+
+struct Lecture {
+    let lName: String
+    let tName: String
+    let sCount: Int
+}
+
+// 2
+
+func printLname(tName: String, lectures: [Lecture]){
+    var lName = ""
+    
+    for lecture in lectures {
+        if tName == lecture.tName {
+            lName = lecture.lName
+        }
+    }
+    print("그 강사님 강의는 \(lName)입니다.")
+}
+
+
+// 3
+let lecture1 = Lecture(lName: "수학강의", tName: "이창형", sCount: 38)
+let lecture2 = Lecture(lName: "영어강의", tName: "류윤성", sCount: 29)
+let lecture3 = Lecture(lName: "음악강의", tName: "심건수", sCount: 33)
+
+let lectures = [lecture1, lecture2, lecture3]
+
+printLname(tName: "심건수", lectures: lectures)
