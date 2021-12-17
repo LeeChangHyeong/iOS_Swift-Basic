@@ -1,0 +1,39 @@
+import UIKit
+
+struct Lecture {
+    var title: String
+    var maxStudents: Int = 10
+    var numOfRegistered: Int = 0
+    
+    func remainSeats() -> Int {
+        let remainSeats = lec.maxStudents - lec.numOfRegistered
+        return remainSeats
+    }
+    // mutating을 써야 numOfRegistered 변경 가능
+    mutating func register() {
+        // 등록된 학생수 증가시키기
+        numOfRegistered += 1
+    }
+    // 타입 프로퍼티
+    static let target: String = "Anybody want to learn something"
+    // 타입 메소드
+    static func 소속학원이름() -> String {
+        return "열정학원"
+    }
+}
+
+var lec = Lecture(title: "iOS Basic")
+
+//func remainSeats(of lec: Lecture) -> Int {
+//    let remainSeats = lec.maxStudents - lec.numOfRegistered
+//    return remainSeats
+//}
+
+//remainSeats(of: lec)
+lec.remainSeats()
+lec.register()
+lec.remainSeats()
+
+Lecture.target
+Lecture.소속학원이름()
+
