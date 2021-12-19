@@ -1,0 +1,66 @@
+import UIKit
+
+struct PersonStruct {
+    var firstName: String
+    var lastName: String
+
+    var fullName: String {
+        return "\(firstName) \(lastName)"
+    }
+
+    // struct에서 프로퍼티 변경하려면 mutating 써야함
+    mutating func uppercaseName() {
+        // 다 대문자로 변경
+        firstName = firstName.uppercased()
+        lastName = lastName.uppercased()
+    }
+}
+
+class personClass {
+    var firstName: String
+    var lastName: String
+    
+    // 클래스가 생성될때 firstName과 lastName을 무조건 인자로 받아서 초기값을 설정해준다
+    init(firstName: String, lastName: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+    
+    var fullName: String{
+        return "\(firstName) \(lastName)"
+    }
+    
+    func uppercaseName() {
+        firstName = firstName.uppercased()
+        lastName = lastName.uppercased()
+    }
+}
+
+
+var personStruct1 = PersonStruct(firstName: "Bruce", lastName: "Wayne")
+var personStruct2 = personStruct1
+
+var personClass1 = personClass(firstName: "Bruce", lastName: "Wayne")
+var personClass2 = personClass1
+
+// 서로 지칭하는것이 아니라 복사하여 따로 들고있는거라 이름이 하나만 바뀜
+// 벨류(Value) 타입
+personStruct2.firstName = "Lee"
+personStruct1.firstName
+personStruct2.firstName
+
+// 같은것을 지칭하고있으니까 한명이 변환하면 다른 한명도 변경
+// 래퍼런스(Reference) 타입
+personClass2.firstName = "Lee"
+personClass1.firstName
+personClass2.firstName
+
+// personClass1이 바뀌지 않는 이유는 personClass2가 새로운 인스턴스를 만들어서 지칭하게 만들었기 때문이다
+personClass2 = personClass(firstName: "Chang", lastName: "Hyeong")
+personClass1.firstName
+personClass2.firstName
+
+// personClass1가 personClass2를 바라보게 변경
+personClass1 = personClass2
+personClass1.firstName
+personClass2.firstName
