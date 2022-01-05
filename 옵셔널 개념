@@ -1,0 +1,114 @@
+
+일반 자료형을 옵셔널 타입(Optional Type)으로 만드는 방법
+
+
+// 자료형 뒤에 물음표(?) 붙이기
+
+// 옵셔널 Int 타입
+var optInt: Int?
+
+// 옵셔널 String 타입
+var optStr: String?
+
+// 옵셔널 Double 타입
+var optDouble: Double?
+
+// 옵셔널 Array 타입
+var optArr: [String]?
+
+// 옵셔널 Dictionary 타입
+var optDic: Dictionary<String, String>?
+var optDic2: [String:String]?
+
+// 옵셔널 Class 타입
+var optClass: AnyObject?
+
+- 일반 자료형을 선언만 하고 초기화하지 않으면 아무것도 할당되지 않지만, 위 처럼 옵셔널 타입으로 자료형을 선언하면 자동으로 nil로 초기화된다. 내부 자료형에 nil값이 부여되는 것이 아니라 옵셔널 타입 자체에 nil이 부여된다는 것이다.
+
+옵셔널 타입의 변수에 값을 할당하는 법
+
+- 옵셔널 타입임을 인지할 필요가 없다
+
+- 일반 변수처럼 값을 할당하면 된다
+
+
+// 옵셔널 Int 타입
+var optInt: Int?
+optInt = 3
+
+// 옵셔널 String 타입
+var optStr: String?
+optStr = "Swift"
+
+// 옵셔널 Array 타입
+var optArr: [String]?
+optArr = ["이창형", "개발자", "화이팅"]
+
+// 옵셔널 Dictionary 타입
+var optDic: [String : Int]?
+optDic = ["국어" : 80, "수학" : 90, "영어" : 70]
+
+중요 !!
+
+옵셔널 타입의 결과값은 그 자체로는 아무것도 할 수 없다. 연산, 결합 모두 불가
+
+옵셔널 해제 방법
+
+옵셔널 강제 해제
+
+- 옵셔널 타입의 값 뒤에 '!' 기호만 붙여주면 된다.
+
+
+var optInt: Int? = 3
+
+print(optInt) 출력 -> Optional(3)
+print(optInt!) 출력 -> 3
+
+Int("123")! + Int("123")! // 246
+
+주의사항
+
+- 강제 해제 연산자를 사용할 때에는 먼저 옵셔널 값이 nil인지 점검해야 한다.
+
+옵셔널 바인딩(Optional Binding)
+
+- if 구문 내에서 조건식 대신 옵셔널 값을 일반 변수나 상수에 할당하는 구문을 사용하는 방식
+
+
+var str = "Swift"
+// if 구문이 옵셔널이면 else 아니면 바로 밑에 문장 실행
+if let intFromStr = Int(str) {
+    print("변환된 값은 \(inFromStr)")
+} else {
+    print("값 변환에 실패하였습니다.")
+}
+
+
+컴파일러에 의한 옵셔널 자동 해제
+
+- 옵셔널 객체를 강제 해제하지 않아도 한쪽이 옵셔널, 다른 한쪽이 일반 타입이라면 자동으로옵셔널 타입을 해제한다
+
+
+if (optInt == 123) {
+   print("optInt == 123")
+} else {
+    print("optInt != 123)
+}
+
+// else가 실행될 것 같지만 if아래 문장이 실행된다
+
+//실행결과
+optInt == 123
+
+옵셔널의 묵시적 해제
+
+- ? 연산자를 제거하고 ! 연산자로 그 자리를 대체
+
+- 형식상 옵셔널로 정의해야 하지만, 실제로 사용할 때에는 절대 nil 값이 대입될 가능성이 없는 변수일 때 사용
+
+
+var value01: Int? = 10
+value01 + 5 // 오류
+
+var value02: Int! = 10
+value02 + 5 // 15
