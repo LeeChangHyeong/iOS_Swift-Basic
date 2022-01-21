@@ -1,0 +1,100 @@
+
+함수란?
+
+- 실행 과정 중에서 독립적으로 처리될 수 있는 부분을 분리하여 구조화한 객체
+
+- 독립적으로 작성된 함수는 간단한 방식으로 여러 번 호출하여 사용할 수 있어서 같은 코드를 반복해서 작성할 필요가 없다
+
+- 함수에는 입력값과 결과값이 있는데 입력값은 인자값 혹은 파라미터라고 불리고 결과값은 반환값 혹은 리턴값으로 불린다
+
+
+// 매개변수는 영어로 파라미터(Parameter)
+func 함수이름(매개변수1: 타입, 매개변수2: 타입, ...) -> 반환타입 {
+    실행내용
+    return 반환값
+}
+
+// 함수의 인자값이 필요 없는 경우 매개변수 생략
+func 함수명() -> 반환 타입 {
+    실행 내용
+    return 반환값
+}
+
+// 반환값이 없는 함수 표현
+
+자주 사용될 함수의 형태
+
+
+// 매개변수와 반환값이 모두 없는 함수
+func printHello() {
+    print("안녕하세요")
+}
+
+// 매개변수가 없지만 반환값은 있는 함수
+func sayHello() -> String {
+    let returnValue = "안녕하세요"
+    return returnValue
+}
+
+// 매개변수는 있으나 반환값이 없는 함수
+func printHelloWithName(name: String) {
+    print("\(name)님, 안녕하세요")
+}
+
+// 매개변수와 반환값이 모두 있는 함수
+func sayHelloWithName(name:String) -> String {
+    let returnValue = "\(name)님, 안녕하세요"
+    return returnValue
+}
+
+// 주의점 !! 반환값의 타입은 반환타입이랑 같아야한다
+// 반환값이 없는 함수일 경우에도 return 구문을 사용하는 경우는 함수의 실행을 명시적으로 종료할 목적으로 사용
+// 옵셔널 바인딩이 실패했을 경우 return 구문을 호출하여 실행 종료
+func hello(name: String?) {
+    guard let _name = name else {
+        return
+    }
+
+    print("\(name)님, 안녕하세요")
+}
+
+함수의 호출
+
+
+func printHello() {
+    print("안녕하세요")
+}
+
+// 매개변수가 없는 printHello라는 함수를 호출
+printHello()
+
+func printHelloWithName(name: String) {
+    print("\(name)님, 안녕하세요")
+}
+
+// 매개변수를 가지고 있는 함수를 호출할 때 괄호 안에 인자값을 넣어서 호출해야 한다
+// 인자값은 앞에서 정의된 매개변수 타입과 일치해야 함
+let inputName = "홍길동"
+printHelloWithName(name: inputName)
+
+// 이렇게 바로 이름을 넣어도 가능
+printHelloWithName(name: "홍길동")
+
+// name: 은 매개변수명이자 인자 레이블로 간주하기 때문에 무조건 적어줘야함
+// 오류
+printHelloWithName("홍길동")
+
+함수는 반드시 하나의 값만을 반환해야 한다
+
+- 여러 개의 값을 반환해야 한다면, 이 값들을 집단 자료형에 담아 반환해야함
+
+
+func getIndvInfo() -> (Int, String) {
+    let height = 180
+    let name = "이창형"
+  
+    // 튜플로 반환
+    return (height, name)
+}
+
+﻿
