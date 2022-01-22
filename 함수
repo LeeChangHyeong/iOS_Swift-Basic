@@ -97,4 +97,27 @@ func getIndvInfo() -> (Int, String) {
     return (height, name)
 }
 
+func getUserInfo() -> (h: Int, g: Character, n: String) {
+    let gender: Character = "M"
+    let height = 180
+    let name = "이창형"
+    
+    return (height, gender, name)
+}
+
+var uInfo = getUserInfo()
+uInfo.0 // 180
+uInfo.1 // M
+uInfo.2 // 이창형
+
+var (a, b, c) = getUserInfo()
+a // 180
+b // M
+c // 이창형
+
+var result = getUserInfo()
+result.h //180
+result.g // M
+result.n // 이창형
+
 ﻿
