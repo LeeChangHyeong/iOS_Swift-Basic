@@ -1,0 +1,70 @@
+
+열거형이란(?)
+
+- 하나의 주제로 연관된 데이터들이 멤버로 구성되어 있는 자료형 객체
+
+- 원치 않는 값이 잘못 입력되는 것을 막고 싶을 때 사용
+
+- 입력받을 값을 미리 특정할 수 있을 때 사용
+
+- 제한된 값 중에서만 선택할 수 있도록 강제하고 싶을 때 사용
+
+열거형 정의
+
+
+enum 열거형 이름 {
+    // 열거형 멤버 정의
+    case 멤버값 1
+    case 멤버값 2
+    case ...
+}
+
+멤버와 값의 분리
+
+ex)
+
+
+// 데이터를 그대로 멤버로 사용하면 이해하기 힘들기 때문에 사용
+// HTTP 응답 코드의 의미
+// 200 정상적인 응답
+// 304 캐싱된 데이터 전송
+// 404 존재하지 않는 URL 또는 페이지 없음
+// 500 서버 에러
+
+enum HTTPCode: Int {
+    case OK = 200
+    case NOT_MODIFY = 304
+    case INCORRECT_PAGE = 404
+    case SERVER_ERROR = 500
+}
+
+// rawValue를 사용하면 멤버와 값이 분리가 된다
+HTTPCode.OK.rawValue // 200
+HTTPCode.INCORRECT_PAGE.rawValue // 404
+
+열거형의 활용
+
+ex)
+
+
+enum UIImagePickerControllerSourceType: Int {
+    case photoLibrary
+    case savedPhotosAlbum
+}
+
+
+
+대표사진 삭제
+사진 설명을 입력하세요.
+
+이 값을 열거형으로 정의해 놓지 않는다면
+
+개발자가 소스 타입을 마음대로 입력할 수 있으므로
+
+잘못된 입력이나 오타로 인하여 심각한 오류가 발생할 수 있다.
+
+이 뿐만 아니라 이미지가 저장되는 곳이 아닌
+
+엉뚱한 위치에서 임의의 보안 파일을 읽어 들일 가능성도 배제할 수 없습니다.
+
+﻿
