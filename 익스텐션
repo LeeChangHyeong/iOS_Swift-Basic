@@ -1,0 +1,38 @@
+
+익스텐션이란(?)
+
+- 이미 존재하는 클래스나 구조체, 열거형 등의 객체에 새로운 기능을 추가하여 확장해주는 구문
+
+- 새로운 객체를 정의한 것이 아니라 이미 존재하는 객체에 여러 가지 요소를 추가해 준다는 점이 특징
+
+
+extension <확장할 기존 객체명> {
+    // 추가할 기능에 대한 구현 코드를 작성
+}
+
+- 이 형태에서 불 수 있듯이, 익스텐션은 extension 키워드를 사용할 뿐 독립적인 객체를 생성하는 구문이 아니다
+
+익스텐션과 연산 프로퍼티
+
+
+extension Double {
+    var km: Double { return self * 1000.0 }
+    var m: Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1000.0 }
+    var description: String {
+        return "\(self)km는 \(self.km)m, \(self)cm는 \(self.cm)m, \(self)mm는 \(self.mm)m입니다."
+    }
+}
+
+2.km // 2000m
+5.5.cm // 0.055m
+125.mm // 0.125m
+7.0.description // "7.0km는 7000.0m, 7.0cm는 0.07m, 7.0mm는 0.007m입니다."
+
+// 이런 식으로 자료형의 기능을 확장해놓으면 다음과 같이 각 단위별로 값을 더해야 할 때 매우 편리하다
+let distance = 42.0.km + 195.m
+print("마라톤의 총 거리는 \(distance)m입니다.")
+// "마라톤의 총 거리는 42195.0m 입니다."
+
+﻿
